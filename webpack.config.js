@@ -7,7 +7,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const options = require('./babel.config')
 
 // Settings
-const title = 'Somwhere I Belong'
+const title = 'Somewhere I Belong'
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development'
 const modeFolder = mode === 'production' ? 'prd' : 'dev'
 const styleLoader = mode === 'production' ? MiniCssExtractPlugin.loader : 'style-loader'

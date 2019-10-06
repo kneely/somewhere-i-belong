@@ -1,7 +1,7 @@
 // Imports
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Dashboard from './dashboard'
+import Dashboard from './components/dashboard'
 import 'semantic-ui-css/semantic.min.css'
 
 ReactDOM.render(

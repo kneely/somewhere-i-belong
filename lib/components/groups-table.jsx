@@ -3,14 +3,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SmartDataTable from 'react-smart-data-table'
 import { Image, Message } from 'semantic-ui-react'
-import EditUser from './edit-user'
-import DeleteUser from './delete-user'
+import EditGroup from './edit-group'
+import DeleteGroup from './delete-group'
 import config from '../config'
 
-const UsersTable = ({
-  users, filterValue, perPage, getUserData,
+const GroupsTable = ({
+  groups, filterValue, perPage, getGroupData,
 }) => {
-  const usersTableHeaders = {
+  const groupsTableHeaders = {
     avatar: {
       transform: (value) => <Image src={value} avatar />,
     },
@@ -21,8 +21,8 @@ const UsersTable = ({
       filterable: false,
       transform: (value, index, row) => (
         <>
-          <EditUser user={row} getUserData={getUserData} />
-          <DeleteUser userID={row.id} getUserData={getUserData} />
+          <EditGroup group={row} getGroupData={getGroupData} />
+          <DeleteGroup groupID={row.id} getGroupData={getGroupData} />
         </>
       ),
     },
@@ -30,18 +30,18 @@ const UsersTable = ({
 
   return (
     <SmartDataTable
-      data={users}
-      headers={usersTableHeaders}
-      name="users-table"
+      data={groups}
+      headers={groupsTableHeaders}
+      name="groups-table"
       parseImg={{
         className: 'ui avatar image',
       }}
       withLinks
       className="ui selectable table"
       emptyTable={(
-        <Message content="There are no users available to display." />
+        <Message content="There are no groups available to display." />
       )}
-      orderedHeaders={config.user.columns}
+      orderedHeaders={config.group.columns}
       hideUnordered
       sortable
       filterValue={filterValue}
@@ -51,16 +51,16 @@ const UsersTable = ({
 }
 
 /* Defines the type of data expected in each passed prop */
-UsersTable.propTypes = {
-  users: PropTypes.arrayOf(PropTypes.object).isRequired,
-  getUserData: PropTypes.func.isRequired,
+GroupsTable.propTypes = {
+  groups: PropTypes.arrayOf(PropTypes.object).isRequired,
+  getGroupData: PropTypes.func.isRequired,
   filterValue: PropTypes.string,
   perPage: PropTypes.number,
 }
 
-UsersTable.defaultProps = {
+GroupsTable.defaultProps = {
   filterValue: '',
   perPage: 0,
 }
 
-export default UsersTable
+export default GroupsTable

@@ -1,3 +1,7 @@
+## 0.0.5
+
+* Finished the group management section
+
 ## 0.0.4
 
 * Finished the user management section

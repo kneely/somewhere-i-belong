@@ -4,6 +4,7 @@ import {
   Divider, Dropdown, Header, Icon, Input, Message, Placeholder, Segment,
 } from 'semantic-ui-react'
 import UsersTable from './users-table'
+import AddNewUser from './add-new-user'
 import { getUsers } from '../api/actions'
 
 class Users extends React.Component {
@@ -18,9 +19,15 @@ class Users extends React.Component {
       error: false,
       errorMessage: '',
     }
+
+    this.getUserData = this.getUserData.bind(this)
   }
 
   componentDidMount() {
+    this.getUserData()
+  }
+
+  getUserData() {
     this.setState({ isLoading: true }, () => {
       getUsers().then(({ status, message, data }) => {
         if (status === 'success') {
@@ -81,9 +88,13 @@ class Users extends React.Component {
             </Placeholder.Paragraph>
           </Placeholder>
         )}
-        {users.length > 0 && (
+        {!isLoading && (
           <>
-            <div style={{ margin: '1em 0em' }}>
+            <Segment
+              basic
+              clearing
+              style={{ margin: '1em 0em', padding: 0 }}
+            >
               <Input
                 icon="search"
                 placeholder="Filter..."
@@ -99,11 +110,13 @@ class Users extends React.Component {
                 }))}
                 onChange={(e, { value }) => this.setState({ perPage: value })}
               />
-            </div>
+              <AddNewUser getUserData={this.getUserData} />
+            </Segment>
             <UsersTable
               users={users}
               filterValue={filterValue}
               perPage={perPage}
+              getUserData={this.getUserData}
             />
           </>
         )}

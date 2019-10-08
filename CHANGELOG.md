@@ -1,3 +1,8 @@
+## 0.0.4
+
+* Finished the user management section
+* Changed the _webpack_ config syntax to ES6
+
 ## 0.0.3
 
 * Finished the directory structure

@@ -1,13 +1,14 @@
 // Imports
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const TerserJSPlugin = require('terser-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const options = require('./babel.config')
+import path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import TerserJSPlugin from 'terser-webpack-plugin'
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin'
+import options from './babel.config'
+import appConfig from './lib/config'
 
 // Settings
-const title = 'Somewhere I Belong'
+const title = appConfig.appTitle
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development'
 const modeFolder = mode === 'production' ? 'prd' : 'dev'
 const styleLoader = mode === 'production' ? MiniCssExtractPlugin.loader : 'style-loader'

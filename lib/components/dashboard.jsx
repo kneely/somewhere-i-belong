@@ -26,7 +26,7 @@ class Dashboard extends React.Component {
     const { innerWidth, innerHeight, screen } = window
     const calculations = {
       width: (innerWidth > 0) ? innerWidth : screen.width,
-      height: (innerWidth > 0) ? innerHeight : screen.height,
+      height: (innerHeight > 0) ? innerHeight : screen.height,
     }
     this.handleVisibilityUpdate(null, { calculations })
   }

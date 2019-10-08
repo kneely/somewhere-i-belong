@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import {
   Button, Form, Grid, Image, Message, Modal,
 } from 'semantic-ui-react'
-import { editUser } from '../api/actions'
+import { editUser, getGroups } from '../api/actions'
 import { filterNonEditable, changeFieldValue, formIsValid } from '../misc/helpers'
 import config from '../config'
 
@@ -13,10 +13,23 @@ const EditUser = ({ user, getUserData }) => {
 
   const [modalOpen, setModalOpen] = useState(false)
   const [fieldsState, setFieldsState] = useState(user)
+  const [groupOpts, setGroupOpts] = useState([])
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   const [isLoading, setLoading] = useState(false)
+
+  useEffect(() => {
+    if (!groupOpts.length) {
+      getGroups().then(({ status, data }) => {
+        if (status === 'success') {
+          setGroupOpts(data.map(({ id, name }) => ({
+            key: id, text: name, value: id,
+          })))
+        }
+      })
+    }
+  }, [])
 
   useEffect(() => {
     setFieldsState(user)
@@ -88,6 +101,27 @@ const EditUser = ({ user, getUserData }) => {
                         )}
                     />
                   ))}
+                  <Form.Select
+                    fluid
+                    search
+                    multiple
+                    name="groups"
+                    label={config.user.attrs.groups.label}
+                    placeholder={config.user.attrs.groups.label}
+                    options={groupOpts}
+                    value={fieldsState.groups || []}
+                    onChange={
+                      (e, { name, value }) => setFieldsState(
+                        changeFieldValue(fieldsState, { name, value }),
+                      )
+                    }
+                    error={(
+                      fieldsState.groups.length
+                      && typeof config.user.attrs.groups.validator === 'function'
+                        ? config.user.attrs.groups.validator(fieldsState.groups)
+                        : false
+                      )}
+                  />
                 </Form>
               </Grid.Column>
             </Grid.Row>

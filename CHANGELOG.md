@@ -1,3 +1,7 @@
+## 0.0.6
+
+* Added support to add groups to users
+
 ## 0.0.5
 
 * Finished the group management section

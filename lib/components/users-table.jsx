@@ -14,15 +14,18 @@ const UsersTable = ({
     avatar: {
       transform: (value) => <Image src={value} avatar />,
     },
+    groups: {
+      transform: (value, index) => (Array.isArray(users[index].groups) ? `${users[index].groups.length}` : '0'),
+    },
     tableActions: {
       text: 'Actions',
       invisible: false,
       sortable: false,
       filterable: false,
-      transform: (value, index, row) => (
+      transform: (value, index) => (
         <>
-          <EditUser user={row} getUserData={getUserData} />
-          <DeleteUser userID={row.id} getUserData={getUserData} />
+          <EditUser user={users[index]} getUserData={getUserData} />
+          <DeleteUser userID={users[index].id} getUserData={getUserData} />
         </>
       ),
     },

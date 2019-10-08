@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import {
   Button, Form, Grid, Image, Message, Modal,
 } from 'semantic-ui-react'
-import { createUser } from '../api/actions'
+import { createUser, getGroups } from '../api/actions'
 import {
   filterNonEditable, buildStateFromFields, changeFieldValue, formIsValid,
 } from '../misc/helpers'
@@ -13,13 +13,27 @@ import config from '../config'
 const AddNewUser = ({ getUserData }) => {
   const fields = Object.keys(config.user.attrs).filter(filterNonEditable(config.user.attrs))
   const fieldsStateDefault = buildStateFromFields(fields, config.user.attrs)
+  fieldsStateDefault.groups = []
 
   const [modalOpen, setModalOpen] = useState(false)
   const [fieldsState, setFieldsState] = useState(fieldsStateDefault)
+  const [groupOpts, setGroupOpts] = useState([])
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   const [isLoading, setLoading] = useState(false)
+
+  useEffect(() => {
+    if (!groupOpts.length) {
+      getGroups().then(({ status, data }) => {
+        if (status === 'success') {
+          setGroupOpts(data.map(({ id, name }) => ({
+            key: id, text: name, value: id,
+          })))
+        }
+      })
+    }
+  }, [])
 
   useEffect(() => {
     setFieldsState(fieldsStateDefault)
@@ -91,6 +105,27 @@ const AddNewUser = ({ getUserData }) => {
                         )}
                     />
                   ))}
+                  <Form.Select
+                    fluid
+                    search
+                    multiple
+                    name="groups"
+                    label={config.user.attrs.groups.label}
+                    placeholder={config.user.attrs.groups.label}
+                    options={groupOpts}
+                    value={fieldsState.groups || []}
+                    onChange={
+                      (e, { name, value }) => setFieldsState(
+                        changeFieldValue(fieldsState, { name, value }),
+                      )
+                    }
+                    error={(
+                      fieldsState.groups.length
+                      && typeof config.user.attrs.groups.validator === 'function'
+                        ? config.user.attrs.groups.validator(fieldsState.groups)
+                        : false
+                      )}
+                  />
                 </Form>
               </Grid.Column>
             </Grid.Row>

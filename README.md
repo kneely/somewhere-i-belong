@@ -1,4 +1,7 @@
-# About
+# Somewhere I Belong
+[![jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
+
+## About
 
 Somewhere I Belong (SIB) is a simple user / group management system dashboard
 

@@ -1,3 +1,7 @@
+## 0.0.7
+
+* Added tests for _Jest_
+
 ## 0.0.6
 
 * Added support to add groups to users

@@ -1,3 +1,10 @@
+## 0.0.7
+
+* Added the binding between users and groups
+  * Users need, at least, one group
+  * Deleted users are removed from groups of which they are members
+  * Groups cannot be deleted while they have members
+
 ## 0.0.6
 
 * Added support to add groups to users

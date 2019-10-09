@@ -6,7 +6,7 @@ import {
 } from 'semantic-ui-react'
 import { deleteGroup } from '../api/actions'
 
-const DeleteGroup = ({ groupID, getGroupData }) => {
+const DeleteGroup = ({ group, getGroupData }) => {
   const [confirmOpen, setConfirmOpen] = useState(false)
   const [error, setError] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
@@ -34,7 +34,7 @@ const DeleteGroup = ({ groupID, getGroupData }) => {
           setLoading(true)
           setError(false)
           setErrorMsg('')
-          deleteGroup({ groupID }).then(({ status, message }) => {
+          deleteGroup(group).then(({ status, message }) => {
             if (status === 'success') {
               setError(false)
               setErrorMsg('')
@@ -54,7 +54,7 @@ const DeleteGroup = ({ groupID, getGroupData }) => {
         content={(
           <Modal.Content>
             {!error && !isLoading && (
-              <p>{`Are you sure you want to delete the group #${groupID} ?`}</p>
+              <p>{`Are you sure you want to delete the group #${group.id} ?`}</p>
             )}
             {isLoading && (
               <p>Please wait..</p>
@@ -74,7 +74,8 @@ const DeleteGroup = ({ groupID, getGroupData }) => {
 
 /* Defines the type of data expected in each passed prop */
 DeleteGroup.propTypes = {
-  groupID: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  /* eslint-disable-next-line react/forbid-prop-types */
+  group: PropTypes.object.isRequired,
   getGroupData: PropTypes.func.isRequired,
 }
 

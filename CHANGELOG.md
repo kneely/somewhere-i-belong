@@ -1,3 +1,7 @@
+## 0.0.8
+
+* Added users' details page
+
 ## 0.0.7
 
 * Added the binding between users and groups

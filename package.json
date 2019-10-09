@@ -1,6 +1,6 @@
 {
   "name": "somewhere-i-belong",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Somewhere I Belong (SIB) is a user / group management system dashboard",
   "main": "lib/index.js",
   "private": true,

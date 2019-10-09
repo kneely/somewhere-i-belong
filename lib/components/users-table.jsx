@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SmartDataTable from 'react-smart-data-table'
 import { Image, Message } from 'semantic-ui-react'
+import ViewUser from './view-user'
 import EditUser from './edit-user'
 import DeleteUser from './delete-user'
 import config from '../config'
@@ -24,6 +25,7 @@ const UsersTable = ({
       filterable: false,
       transform: (value, index) => (
         <>
+          <ViewUser userID={users[index].id} />
           <EditUser user={users[index]} getUserData={getUserData} />
           <DeleteUser userID={users[index].id} getUserData={getUserData} />
         </>

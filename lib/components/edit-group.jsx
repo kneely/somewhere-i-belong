@@ -54,7 +54,7 @@ const EditGroup = ({ group, getGroupData }) => {
               content={`Error: ${errorMsg || 'Unknown'}`}
             />
           )}
-          <Grid>
+          <Grid stackable>
             <Grid.Row columns={2}>
               <Grid.Column width={2} textAlign="center" verticalAlign="top">
                 <Image

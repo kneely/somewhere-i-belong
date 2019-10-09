@@ -71,7 +71,7 @@ const AddNewUser = ({ getUserData }) => {
               content={`Error: ${errorMsg || 'Unknown'}`}
             />
           )}
-          <Grid>
+          <Grid stackables>
             <Grid.Row columns={2}>
               <Grid.Column width={2} textAlign="center" verticalAlign="top">
                 <Image

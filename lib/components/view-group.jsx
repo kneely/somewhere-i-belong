@@ -16,7 +16,7 @@ const ViewGroup = ({ groupID }) => (
 
 /* Defines the type of data expected in each passed prop */
 ViewGroup.propTypes = {
-  groupID: PropTypes.string.isRequired,
+  groupID: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 }
 
 export default ViewGroup

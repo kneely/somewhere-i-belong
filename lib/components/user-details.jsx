@@ -64,8 +64,14 @@ const UserDetails = ({ match: { params: { id: userID } } }) => {
         <Grid stackable>
           <Grid.Row columns={2}>
             <Grid.Column width={4} textAlign="center" verticalAlign="top">
-              {user.avatar && (
-                <Image src={user.avatar} verticalAlign="top" centered circular />
+              {(user.avatar || config.user.avatar.default) && (
+                <Image
+                  src={(user.avatar || config.user.avatar.default)}
+                  verticalAlign="top"
+                  centered
+                  circular
+                  size="small"
+                />
               )}
             </Grid.Column>
             <Grid.Column width={12}>

@@ -16,7 +16,7 @@ const GroupsTable = ({
       transform: (value) => <Image src={value} avatar />,
     },
     members: {
-      transform: (value, index) => (Array.isArray(groups[index].members) ? `${groups[index].members.length}` : '-'),
+      transform: (value, index) => (Array.isArray(groups[index].members) ? `${groups[index].members.length}` : '0'),
     },
     tableActions: {
       text: 'Actions',

@@ -16,7 +16,7 @@ const ViewUser = ({ userID }) => (
 
 /* Defines the type of data expected in each passed prop */
 ViewUser.propTypes = {
-  userID: PropTypes.string.isRequired,
+  userID: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 }
 
 export default ViewUser

@@ -1,3 +1,10 @@
+## 0.1.0
+
+* Directory structure change
+* Updated the documentation
+* Added in-app documentation
+* Bug fixes and enhancements
+
 ## 0.0.9
 
 * Added groups' details page

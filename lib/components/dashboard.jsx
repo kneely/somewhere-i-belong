@@ -6,7 +6,7 @@ import {
 import {
   Button, Icon, Menu, Segment, Sidebar, Visibility,
 } from 'semantic-ui-react'
-import { routes, menu } from './navigation'
+import { routes, menu } from '../navigation'
 import MenuItems from './menu-items'
 import ErrorBoundary from './error-boundary'
 

@@ -1,16 +1,12 @@
 // Imports
 import React from 'react'
-import { Header, Segment } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
+import Markdown from './markdown'
+import content from '../../README.md'
 
 const Home = () => (
-  <Segment>
-    <Header>
-      User Management Dashboard
-    </Header>
-    <p>
-      In this application, you can manage users and groups.
-      Use the navigation sidebar to select an action.
-    </p>
+  <Segment style={{ overflow: 'auto' }}>
+    <Markdown content={content} />
   </Segment>
 )
 

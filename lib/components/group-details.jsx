@@ -65,7 +65,13 @@ const GroupDetails = ({ match: { params: { id: groupID } } }) => {
           <Grid.Row columns={2}>
             <Grid.Column width={4} textAlign="center" verticalAlign="top">
               {(group.avatar || config.group.attrs.avatar.default) && (
-                <Image src={group.avatar || config.group.attrs.avatar.default} verticalAlign="top" centered circular />
+                <Image
+                  src={group.avatar || config.group.attrs.avatar.default}
+                  verticalAlign="top"
+                  centered
+                  circular
+                  size="small"
+                />
               )}
             </Grid.Column>
             <Grid.Column width={12}>
@@ -78,7 +84,7 @@ const GroupDetails = ({ match: { params: { id: groupID } } }) => {
                           {config.group.attrs[key].label}
                         </strong>
                       </Table.Cell>
-                      <Table.Cell>{group[key]}</Table.Cell>
+                      <Table.Cell>{group[key] || '-'}</Table.Cell>
                     </Table.Row>
                   ) : null))}
                   <Table.Row>

@@ -38,6 +38,7 @@ const GroupMembers = ({ groupMembers }) => {
           {fullName}
         </Label>
       ))}
+      {!(users || []).length && '-'}
     </Label.Group>
   )
 }

@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import TerserJSPlugin from 'terser-webpack-plugin'
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin'
+import highlight from 'highlight.js'
 import options from './babel.config'
 import appConfig from './lib/config'
 
@@ -40,7 +41,7 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
+        test: /\.s?css$/,
         use: [
           styleLoader,
           'css-loader',
@@ -62,6 +63,24 @@ module.exports = {
           name: '[hash].[ext]',
           outputPath: 'img/',
         },
+      },
+      {
+        test: /\.(md)$/,
+        use: [
+          'html-loader',
+          {
+            loader: 'markdown-loader',
+            options: {
+              highlight: (code, lang) => {
+                if (!lang || ['text', 'literal', 'nohighlight'].includes(lang)) {
+                  return `<pre class="hljs">${code}</pre>`
+                }
+                const html = highlight.highlight(lang, code).value
+                return `<span class="hljs">${html}</span>`
+              },
+            },
+          },
+        ],
       },
     ],
   },

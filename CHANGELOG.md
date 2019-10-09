@@ -1,3 +1,7 @@
+## 0.0.9
+
+* Added groups' details page
+
 ## 0.0.8
 
 * Added users' details page

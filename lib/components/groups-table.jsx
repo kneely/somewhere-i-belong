@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SmartDataTable from 'react-smart-data-table'
 import { Image, Message } from 'semantic-ui-react'
+import ViewGroup from './view-group'
 import EditGroup from './edit-group'
 import DeleteGroup from './delete-group'
 import config from '../config'
@@ -24,6 +25,7 @@ const GroupsTable = ({
       filterable: false,
       transform: (value, index) => (
         <>
+          <ViewGroup groupID={groups[index].id} />
           <EditGroup group={groups[index]} getGroupData={getGroupData} />
           <DeleteGroup group={groups[index]} getGroupData={getGroupData} />
         </>

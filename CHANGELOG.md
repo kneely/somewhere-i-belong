@@ -4,6 +4,7 @@
   * Users need, at least, one group
   * Deleted users are removed from groups of which they are members
   * Groups cannot be deleted while they have members
+* Added tests for _Jest_
 
 ## 0.0.6
 

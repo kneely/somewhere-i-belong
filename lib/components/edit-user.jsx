@@ -116,7 +116,7 @@ const EditUser = ({ user, getUserData }) => {
                       )
                     }
                     error={(
-                      fieldsState.groups.length
+                      (fieldsState.groups || []).length
                       && typeof config.user.attrs.groups.validator === 'function'
                         ? config.user.attrs.groups.validator(fieldsState.groups)
                         : false

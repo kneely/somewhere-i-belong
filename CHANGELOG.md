@@ -1,3 +1,8 @@
+## 0.1.1
+
+* Fixed a bug in which newly created groups lacked the _members_ attribute
+* Fixed a bug in which newly created groups couldn't be removed
+
 ## 0.1.0
 
 * Directory structure change

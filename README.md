@@ -3,6 +3,12 @@
 
 Somewhere I Belong (SIB) is a simple user / group management system dashboard
 
+## Technology
+
+This mockup application makes use of the
+[react-smart-data-table](https://github.com/joaocarmo/react-smart-data-table)
+package.
+
 ## Requirements
 
 This app uses an internal router which requires the server to be configured to

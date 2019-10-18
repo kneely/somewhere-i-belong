@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SmartDataTable from 'react-smart-data-table'
-import { Image, Message } from 'semantic-ui-react'
+import { Message } from 'semantic-ui-react'
 import ViewUser from './view-user'
 import EditUser from './edit-user'
 import DeleteUser from './delete-user'
@@ -12,11 +12,12 @@ const UsersTable = ({
   users, filterValue, perPage, getUserData,
 }) => {
   const usersTableHeaders = {
-    avatar: {
-      transform: (value) => <Image src={value} avatar />,
-    },
     groups: {
-      transform: (value, index) => (Array.isArray(users[index].groups) ? `${users[index].groups.length}` : '0'),
+      transform: (value, index) => (
+        Array.isArray(users[index].groups)
+          ? `${users[index].groups.length}`
+          : '0'
+      ),
     },
     tableActions: {
       text: 'Actions',

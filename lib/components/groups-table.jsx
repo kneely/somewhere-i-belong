@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SmartDataTable from 'react-smart-data-table'
-import { Image, Message } from 'semantic-ui-react'
+import { Message } from 'semantic-ui-react'
 import ViewGroup from './view-group'
 import EditGroup from './edit-group'
 import DeleteGroup from './delete-group'
@@ -12,11 +12,12 @@ const GroupsTable = ({
   groups, filterValue, perPage, getGroupData,
 }) => {
   const groupsTableHeaders = {
-    avatar: {
-      transform: (value) => <Image src={value} avatar />,
-    },
     members: {
-      transform: (value, index) => (Array.isArray(groups[index].members) ? `${groups[index].members.length}` : '0'),
+      transform: (value, index) => (
+        Array.isArray(groups[index].members)
+          ? `${groups[index].members.length}`
+          : '0'
+      ),
     },
     tableActions: {
       text: 'Actions',

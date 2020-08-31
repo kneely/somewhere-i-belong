@@ -62,3 +62,6 @@ typings/
 
 # macOS minions
 .DS_Store
+
+# Bundle
+dist/

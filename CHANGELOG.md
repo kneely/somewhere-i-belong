@@ -1,3 +1,5 @@
+# Changelog
+
 ## 0.1.1
 
 * Fixed a bug in which newly created groups lacked the _members_ attribute

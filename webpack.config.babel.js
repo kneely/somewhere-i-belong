@@ -5,7 +5,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import TerserJSPlugin from 'terser-webpack-plugin'
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin'
 import highlight from 'highlight.js'
-import options from './babel.config'
+import babelOptions from './babel.config'
 import appConfig from './lib/config'
 
 // Settings
@@ -34,10 +34,10 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options,
+          options: babelOptions,
         },
       },
       {

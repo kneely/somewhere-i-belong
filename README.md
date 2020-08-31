@@ -18,19 +18,19 @@ serve 404's with the root file `index.html`.
 
 Several top level configurations can be tweaked in a dedicated file.
 
-```
+```txt
 ./lib/config.js
 ```
 
 The navigation settings are also isolated from the rest of the application.
 
-```
+```txt
 ./lib/navigation.js
 ```
 
 The API endpoints to the backend server are setup in a custom file as well.
 
-```
+```txt
 ./lib/api/api.js
 ```
 
@@ -42,31 +42,31 @@ but disabled by default.
 
 Always start by installing the project's dependencies.
 
-```
-$ npm install
+```sh
+yarn install
 ```
 
 Start the development server with a simple command. The server will serve over
 `http://localhost:3000/`.
 
-```
-$ npm start
+```sh
+yarn start
 ```
 
 Run the tests.
 
-```
-$ npm test
+```sh
+yarn test
 ```
 
 Build for production.
 
-```
-$ npm run build
+```sh
+yarn build
 ```
 
 Clean the builds from the directory.
 
-```
-$ npm run clean
+```sh
+yarn clean
 ```
